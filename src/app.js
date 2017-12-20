@@ -35,7 +35,7 @@ const lettersUsed = {
   x: false,
   y: false,
   z: false,
-}
+};
 
 /* Returns a list of dictionary words from the words.txt file. */
 const readWords = () => {
@@ -48,7 +48,7 @@ const finalWord = words[Math.floor(Math.random() * words.length)].split('');
 
 server.post('/guess', (req, res) => {
   const { letter } = req.body;
-  console.log(finalWord, letter)
+  console.log(finalWord, letter);
   if (!letter) {
     res
       .status(STATUS_USER_ERROR)
@@ -65,8 +65,7 @@ server.post('/guess', (req, res) => {
 });
 
 server.get('/', (req, res) => {
-
-  res.json("hello");
+  res.json('hello');
 });
 
 server.get('/guess', (req, res) => {
@@ -74,8 +73,8 @@ server.get('/guess', (req, res) => {
     if (lettersUsed[letR]) {
       return letR;
     }
-    return '-'
-  })
+    return '-';
+  });
   console.log(wordSoFar);
   res.json({ wordSoFar, lettersUsed });
 });
